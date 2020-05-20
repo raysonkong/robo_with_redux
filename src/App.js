@@ -20,7 +20,7 @@ class App extends React.Component {
     const {robots} = this.state;
     return(
       <div className="tc">
-        <h1>RoboFriends</h1>
+        <h1>RoboFriends! Your dearest friends!</h1>
         <CardsList robots={robots} />
       </div>
     );

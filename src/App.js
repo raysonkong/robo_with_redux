@@ -1,12 +1,15 @@
 import React from 'react';
 import CardsList from './CardsList';
 import './App.css';
+import SearchBox from './SearchBox';
+import Scroll from './Scroll';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        robots: []
+        robots: [],
+        searchfield: ''
     }
   }
 
@@ -16,12 +19,24 @@ class App extends React.Component {
     .then(users => this.setState({robots: users}))
   }
 
+  onSearchfieldChange = (event) => {
+    console.log(event.target.value)
+    this.setState({searchfield: event.target.value});
+  }
+
   render() {
-    const {robots} = this.state;
+    const {robots, searchfield} = this.state;
+    const filteredRobots = robots.filter(robot => {
+      return robot.name.toLowerCase().includes(searchfield.toLowerCase())
+    })
+
     return(
       <div className="tc">
-        <h1>RoboFriends! Your dearest friends!</h1>
-        <CardsList robots={robots} />
+        <h1 className="f2 title">RoboFriends</h1>
+        <SearchBox onSearchfieldChange={this.onSearchfieldChange} />
+        <Scroll >
+          <CardsList robots={filteredRobots} />
+        </Scroll>
       </div>
     );
   }

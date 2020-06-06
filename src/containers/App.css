@@ -45,7 +45,7 @@ body {
 font-family: 'SEGA LOGO FONT';
 font-style: normal;
 font-weight: normal;
-src: local('SEGA LOGO FONT'), url('./assets/SEGA.woff') format('woff');
+src: local('SEGA LOGO FONT'), url('../assets/SEGA.woff') format('woff');
 }
 
 
